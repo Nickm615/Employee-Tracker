@@ -33,10 +33,20 @@ function init() {
                 });
                 break;
             case 'View all roles':
-                
+                db.query('SELECT * FROM roles;', (err, result)=> {
+                    if (err) {
+                        console.log(err);
+                    }
+                    console.table(result)
+                });
                 break;
             case 'View all employees':
-                
+                db.query('SELECT * FROM employee;', (err, result)=> {
+                    if (err) {
+                        console.log(err);
+                    }
+                    console.table(result)
+                });
                 break;
             case 'Add a department':
                 
