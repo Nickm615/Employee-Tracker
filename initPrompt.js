@@ -4,6 +4,7 @@ const cTable = require('console.table');
 const addDept = require('./addDept')
 const addRole = require('./addRole')
 const addEmp = require('./addEmp')
+const updateEmp = require('./updateEmp')
 const db = mysql.createConnection(
     {
         host: 'localhost',
@@ -64,7 +65,7 @@ function init() {
                 
                 break;
             case 'Update an employee role':
-                
+                updateEmp();
                 break;
             case 'Add a role':
                 addRole()
@@ -74,4 +75,4 @@ function init() {
     })
 }
 
-module.exports = init;
+module.exports = init
