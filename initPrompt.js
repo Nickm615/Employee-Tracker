@@ -47,7 +47,11 @@ function init() {
                 });
                 break;
             case 'View all employees':
-                db.query('SELECT * FROM employee;', (err, result)=> {
+                db.query(`
+                SELECT * FROM roles
+                JOIN employee_table ON employee_table.role_id=roles.id
+                JOIN department ON roles.department_id=department.id
+                ORDER BY employee_table.id;`, (err, result)=> {
                     if (err) {
                         console.log(err);
                     }

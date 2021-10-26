@@ -34,13 +34,13 @@ const db = mysql.createConnection(
 function addEmp(){
     inquirer.prompt(questions)
     .then(response=>{
-        db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('${response.first_name}','${response.last_name}','${response.role_id}','${response.manager_id}')`, (err, result)=>{
+        db.query(`INSERT INTO employee_table (first_name, last_name, role_id, manager_id) VALUES ('${response.first_name}','${response.last_name}','${response.role_id}','${response.manager_id}')`, (err, result)=>{
             if (err) {
                 console.log(err);
             }
 
             else{
-                db.query('SELECT * FROM employee;', (err, result)=> {
+                db.query('SELECT * FROM employee_table;', (err, result)=> {
                     if (err) {
                         console.log(err);
                     }

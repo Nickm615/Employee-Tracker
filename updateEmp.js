@@ -25,12 +25,12 @@ function updateEmp(){
     inquirer
     .prompt(questions)
     .then(response=>{
-        db.query(`UPDATE employee SET role_id = ${response.role_id} WHERE id = ${response.emp_id}`, (err, result)=>{
+        db.query(`UPDATE employee_table SET role_id = ${response.role_id} WHERE id = ${response.emp_id}`, (err, result)=>{
             if (err) {
                 console.log(err);
             }
             else{
-                db.query('SELECT * FROM employee', (err, result)=>{
+                db.query('SELECT * FROM employee_table', (err, result)=>{
                     if (err) {
                         console.log(err);
                     }
