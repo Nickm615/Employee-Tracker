@@ -1,22 +1,26 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
-const init = require('./initPrompt');
 const questions = [
     {
         type: 'input',
-        message:'Enter name of new role',
-        name:'name'
+        message:'Enter  first name of new employee',
+        name:'first_name'
     },
     {
         type: 'input',
-        message:'Enter salary of new role',
-        name:'salary'
+        message:'Enter last name of new employee',
+        name:'last_name'
     },
     {
         type: 'input',
-        message:'Enter department id number of new role',
-        name:'dept_id'
+        message:'Enter role id number of new employee',
+        name:'role_id'
+    },
+    {
+        type: 'input',
+        message:"Enter id number of new employee's manager",
+        name:'manager_id'
     }
 ];
 const db = mysql.createConnection(
@@ -27,25 +31,21 @@ const db = mysql.createConnection(
         database:'employee_db'
     })
 
-function addRole(){
+function addEmp(){
     inquirer.prompt(questions)
     .then(response=>{
-        db.query(`INSERT INTO roles (title, salary, department_id) VALUES ('${response.name}','${response.salary}','${response.dept_id}')`, (err, result)=>{
+        db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('${response.first_name}','${response.last_name}','${response.role_id}','${response.manager_id}')`, (err, result)=>{
             if (err) {
                 console.log(err);
             }
 
             else{
-                db.query('SELECT * FROM roles;', (err, result)=> {
+                db.query('SELECT * FROM employee;', (err, result)=> {
                     if (err) {
                         console.log(err);
                     }
-                 
                     console.table(result)
-                    
-                  
                 });
-             
             }
         })
 
@@ -54,4 +54,4 @@ function addRole(){
     
 
 
-module.exports = addRole;
+module.exports = addEmp;

@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const cTable = require('console.table');
 const addDept = require('./addDept')
 const addRole = require('./addRole')
+const addEmp = require('./addEmp')
 const db = mysql.createConnection(
     {
         host: 'localhost',
@@ -32,6 +33,7 @@ function init() {
                         console.log(err);
                     }
                     console.table(result)
+                    init();
                 });
                 break;
             case 'View all roles':
@@ -40,6 +42,7 @@ function init() {
                         console.log(err);
                     }
                     console.table(result)
+                    init();
                 });
                 break;
             case 'View all employees':
@@ -48,12 +51,16 @@ function init() {
                         console.log(err);
                     }
                     console.table(result)
+                    init();
                 });
                 break;
             case 'Add a department':
-                addDept();
+                addDept()
+                
+                
                 break;
             case 'Add an employee':
+                addEmp();
                 
                 break;
             case 'Update an employee role':
@@ -61,9 +68,10 @@ function init() {
                 break;
             case 'Add a role':
                 addRole()
+              
                 break;
         }
     })
 }
 
-module.exports = init
+module.exports = init;
