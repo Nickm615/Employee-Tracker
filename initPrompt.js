@@ -1,6 +1,7 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
+const addDept = require('./addDept')
 const db = mysql.createConnection(
     {
         host: 'localhost',
@@ -49,7 +50,7 @@ function init() {
                 });
                 break;
             case 'Add a department':
-                
+                addDept();
                 break;
             case 'Add an employee':
                 
