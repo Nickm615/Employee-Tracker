@@ -60,19 +60,19 @@ function init() {
                 });
                 break;
             case 'Add a department':
-                addDept()
+                addDept(init)
                 
                 
                 break;
             case 'Add an employee':
-                addEmp();
+                addEmp(init);
                 
                 break;
             case 'Update an employee role':
-                updateEmp();
+                updateEmp(init);
                 break;
             case 'Add a role':
-                addRole()
+                addRole(init)
               
                 break;
         }

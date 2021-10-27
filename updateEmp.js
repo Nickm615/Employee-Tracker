@@ -21,7 +21,7 @@ const db = mysql.createConnection(
         database:'employee_db'
     })
 
-function updateEmp(){
+function updateEmp(callback){
     inquirer
     .prompt(questions)
     .then(response=>{
@@ -35,6 +35,7 @@ function updateEmp(){
                         console.log(err);
                     }
                     console.table(result);
+                    callback();
                 })
             }
         })

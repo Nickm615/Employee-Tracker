@@ -27,7 +27,7 @@ const db = mysql.createConnection(
         database:'employee_db'
     })
 
-function addRole(){
+function addRole(callback){
     inquirer.prompt(questions)
     .then(response=>{
         db.query(`INSERT INTO roles (title, salary, department_id) VALUES ('${response.name}','${response.salary}','${response.dept_id}')`, (err, result)=>{
@@ -42,6 +42,8 @@ function addRole(){
                     }
                  
                     console.table(result)
+                    callback();
+                  
                     
                   
                 });

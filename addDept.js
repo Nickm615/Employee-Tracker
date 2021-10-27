@@ -9,7 +9,7 @@ const db = mysql.createConnection(
         database:'employee_db'
     })
 
-function addDept(){
+function addDept(callback){
     inquirer.prompt({
         type: 'input',
         message:'Enter name of new department',
@@ -27,6 +27,7 @@ function addDept(){
                         console.log(err);
                     }
                     console.table(result)
+                    callback()
                 });
             }
         })
